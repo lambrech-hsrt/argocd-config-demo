@@ -21,7 +21,7 @@ data:
     g, your-github-org:your-team, role:org-admin
 
     p, role:alice-readonly, applications, get, *, allow
-    p, role:alice-readonly, applications, get, xy, deny
+    p, role:alice-readonly, applications, get, argocd-config, deny
     p, role:alice-readonly, clusters, get, *, allow
     p, role:alice-readonly, repositories, get, *, allow
     p, role:alice-readonly, projects, get, *, allow
