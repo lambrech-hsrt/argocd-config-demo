@@ -11,11 +11,7 @@ data:
   # add an additional local user with apiKey and login capabilities
   #   apiKey - allows generating API keys
   #   login - allows to login using UI
-  accounts.alice: apiKey,login
+  accounts.alice: apiKey, login
   # disables user. User is enabled by default
   accounts.alice.enabled: "true"
-
   # Specifies regex expression for password
-
-  # enable exec for running Terminals in the UI (beware of security aspect)
-  exec.enabled: "false"
