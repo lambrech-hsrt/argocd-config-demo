@@ -7,7 +7,20 @@ This is an example for authorization handling in ArgoCD. We will create a simple
 
 ## Project Structure
 
-TODO
+```
+.
+├── apps/
+│   ├── templates/
+│   │   ├── helm-guestbook.yaml
+│   │   ├── helm-hooks.yaml
+│   │   ├── kustomize-guestbook.yaml
+│   │   └── ...
+│   ├── Chart.yaml
+│   └── values.yaml
+└── config/
+    ├── argocd-cm.yaml --> Argo CD Config Map (for Users and other Stuff)
+    └── argocd-rbac-cm.yaml --> ArgoCD Role Based Access Controll Configuration
+```
 
 ## 1. getting started from scratch
 This guide is foru you if you don't have already installed ArgoCD. If you already have ArgoCD 
