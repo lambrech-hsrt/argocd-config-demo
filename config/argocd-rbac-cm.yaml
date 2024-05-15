@@ -19,3 +19,11 @@ data:
     p, role:org-admin, logs, get, *, allow
     p, role:org-admin, exec, create, */*, allow
     g, your-github-org:your-team, role:org-admin
+
+    p, role:alice-readonly, applications, get, *, allow
+    p, role:alice-readonly, applications, get, xy, deny
+    p, role:alice-readonly, clusters, get, *, allow
+    p, role:alice-readonly, repositories, get, *, allow
+    p, role:alice-readonly, projects, get, *, allow
+    p, role:alice-readonly, logs, get, *, deny
+    g, alice, role:alice-readonly
