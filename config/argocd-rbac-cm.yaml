@@ -5,6 +5,8 @@ metadata:
   namespace: argocd
 data:
   policy.default: role:readonly
+  scopes: '[groups]'
+  role.default: readonly
   policy.csv: |
     p, role:org-admin, applications, *, */*, allow
     p, role:org-admin, clusters, get, *, allow
@@ -20,3 +22,6 @@ data:
     p, role:org-admin, exec, create, */*, allow
     p, role:org-admin, exec, create, */*, allow
     g, your-github-org:your-team, role:org-admin
+  
+  # Bind Alice to the readonly role
+  g, alice, role:readonly

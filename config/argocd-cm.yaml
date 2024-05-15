@@ -14,6 +14,10 @@ data:
   accounts.alice: apiKey, login
   # disables user. User is enabled by default
   accounts.alice.enabled: "true"
+
+  # init password
+  accounts.alice.password: ''
+
   # Specifies regex expression for password
 
   # enable exec for running Terminals in the UI (beware of security aspect)

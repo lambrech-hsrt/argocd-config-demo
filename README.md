@@ -43,6 +43,23 @@ argocd app create argocd-config \
 --sync-policy automated
 ```
 
+Now we should see a new account called **alice**. We can check this with following command:
+```sh
+$ argocd account list
+NAME   ENABLED  CAPABILITIES
+admin  true     login
+alice  true     apiKey, login
+```
+
+Alice currently has no password set. If you logged in with the admin account recently you can set a new password for alice in order to login with her account in the UI:
+```sh
+# if you are managing users as the admin user, <current-user-password> should be the current admin password.
+argocd account update-password \
+  --account <name> \
+  --current-password <current-user-password> \
+  --new-password <new-user-password>
+```
+
 ## Apps 
 
 Apps using the **App of Apps** pattern
