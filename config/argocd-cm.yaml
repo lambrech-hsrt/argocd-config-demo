@@ -15,3 +15,6 @@ data:
   # disables user. User is enabled by default
   accounts.alice.enabled: "true"
   # Specifies regex expression for password
+
+  # enable exec for running Terminals in the UI (beware of security aspect)
+  exec.enabled: "false"
