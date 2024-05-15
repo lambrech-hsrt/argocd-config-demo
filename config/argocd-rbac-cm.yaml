@@ -8,6 +8,9 @@ data:
   scopes: '[groups]'
   role.default: readonly
   policy.csv: |
+    p, role:developer, applications, get, *, allow
+    p, role:developer, applications, get, config-app, deny
+
     p, role:org-admin, applications, *, */*, allow
     p, role:org-admin, clusters, get, *, allow
     p, role:org-admin, repositories, get, *, allow
@@ -24,4 +27,4 @@ data:
     g, your-github-org:your-team, role:org-admin
   
   # Bind Alice to the readonly role
-  g, alice, role:readonly
+  g, alice, role:developer
