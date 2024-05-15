@@ -9,29 +9,39 @@ This is an example for authorization handling in ArgoCD. We will create a simple
 
 TODO
 
-## vorbereitung
-First Fork this Repository and export your github username:
+## 1. getting started from scratch
+This guide is foru you if you don't have already installed ArgoCD. If you already have ArgoCD 
+you can skip to step 2.
+
+### 1.1 First Fork this Repository and export your github username:
 ```sh
 export USER=<USER>
 ```
 
-get init password for UI:
+### 1.2 install Argo CD
+```sh
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+### 1.3 get init password for UI:
 ```sh
 argocd admin initial-password -n argocd
 ```
 
-If not already done port-forward your ArgoCD UI:
+### 1.4 port-forward your ArgoCD UI:
 ```sh
-kubectl port-forward -n argocd svc/argocd-server 8080:80
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
-
-If not already done make sure your argocd-cli is connected to your argocd instance. for demonstration purposes you can 
+### 1.5 argocd CLI
+make sure your argocd-cli is connected to your argocd instance. for demonstration purposes you can 
 connect the CLI with the instance like this and paste your user and password:
 ```sh
 argocd login 127.0.0.1:8080
 ```
 
-## Configure ArgoCD
+## 2. Configure ArgoCD
 
 Configure ArgoCD to manage itselfs configurations in Git:
 ```sh
