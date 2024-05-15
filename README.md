@@ -43,6 +43,7 @@ argocd login 127.0.0.1:8080
 
 ## 2. Configure ArgoCD
 
+### 2.1 Add ArgoCD Config to Git and check user
 Configure ArgoCD to manage itselfs configurations in Git:
 ```sh
 argocd app create argocd-config \
@@ -52,8 +53,12 @@ argocd app create argocd-config \
 --dest-namespace argocd \
 --sync-policy automated
 ```
+<img src="https://github.com/lambrech-hsrt/argocd-config-demo/blob/main/.img/argo-config.png" alt="ressources">
 
-Now we should see a new account called **alice**. We can check this with following command:
+You can now login with the admin in the UI and you will the our new config application containing the RBAC
+and the argocd configmap
+
+Also we should see a new account called **alice**. We can check this with following command:
 ```sh
 $ argocd account list
 NAME   ENABLED  CAPABILITIES
@@ -61,6 +66,7 @@ admin  true     login
 alice  true     apiKey, login
 ```
 
+### 2.2 new password for Alice
 Alice currently has no password set. If you logged in with the admin account recently you can set a new password for alice in order to login with her account in the UI:
 ```sh
 # if you are managing users as the admin user, <current-user-password> should be the current admin password.
@@ -70,13 +76,15 @@ argocd account update-password \
   --new-password <new-user-password>
 ```
 
-## Apps 
+## 3. Adding Demo Apps 
 
-Apps using the **App of Apps** pattern
+In this Section we are going to add some sample apps to test our permission levels
 
-More Details see: https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/
+The Apps are using the **App of Apps** pattern from ArgoCD details here: https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/
 
-### Bootstrap
+### 3.1 Bootstrap
+
+We can bootstrap with one single command our demo app:
 
 ```sh
 export USER=<USER>
@@ -85,19 +93,18 @@ argocd app create apps \
     --dest-server https://kubernetes.default.svc \
     --repo https://github.com/$USER/argocd-config-demo \
     --path apps  
-argocd app sync apps  
 ```
 
-After adding the app sync via CLI
+By default the applications nested in ``apps`` are not sync yet we cann sync them with the following command or with
+the UI
 ```sh
 argocd app sync -l app.kubernetes.io/instance=apps
 ```
 
 ## Results
 
-Now we have two users: **admin** and **alice**. Admin has all access rights including execute shell commands in pods. for that we modified the configmap
-```sh
-p, role:org-admin, exec, create, *, allow
-```
+Now we have two users: **admin** and **alice**. Admin has all access rights including execute shell commands in pods. for that we modified the configmap. 
+
+Alice only can view the applications and not view the configuration app. If you try to change anything with alice you will get an ``permission denied`` error message in the UI.
 
 
