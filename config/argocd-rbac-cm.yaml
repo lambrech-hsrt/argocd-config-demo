@@ -18,5 +18,7 @@ data:
     p, role:org-admin, projects, delete, *, allow
     p, role:org-admin, logs, get, *, allow
     p, role:org-admin, exec, create, */*, allow
+    
+    p, role:org-admin, exec, create, *, allow
 
     g, your-github-org:your-team, role:org-admin
