@@ -15,3 +15,12 @@ data:
   # disables user. User is enabled by default
   accounts.alice.enabled: "true"
   # Specifies regex expression for password
+
+  # Diffing
+
+  # For all applications, ignore the replicas (good for autoscalers)
+  resource.customizations.ignoreDifferences.all: |
+    managedFieldsManagers:
+    - kube-controller-manager
+    jsonPointers:
+    - /spec/replicas

@@ -40,6 +40,8 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
+Wait for all pods to be ready. this can take a few minutes.
+
 ### 1.3 get init password for UI:
 ```sh
 argocd admin initial-password -n argocd
