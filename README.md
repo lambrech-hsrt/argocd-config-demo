@@ -2,6 +2,8 @@
 Argo CD Config Demo Repository with user management and RBAC management. In this Demo we will not configure Singe Sign on.
 This is an example for authorization handling in ArgoCD. We will create a simple user alice with limited access rights
 
+This example also includes a simple demonstration for Diffing with ArgoCD (replicas).
+
 - ArgoCD Config Map Example for Real Projects: https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/
 - ArgoCD Config Map Example for RBAC: https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
 
