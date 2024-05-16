@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: diffing_demo
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/lambrech-hsrt/argocd-config-demo.git'
+    path: diffing_demo
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  # We Ignore here the replicas set (ideal for autoscalers)
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      name: diffing_demo
+      namespace: default
+      jsonPointers:
+        - /spec/replicas
