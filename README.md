@@ -4,6 +4,7 @@ This is an example for authorization handling in ArgoCD. We will create a simple
 
 This example also includes a simple demonstration for Diffing with ArgoCD (replicas).
 
+More Details for RBAC and the ArgoCD Config Map:
 - ArgoCD Config Map Example for Real Projects: https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/
 - ArgoCD Config Map Example for RBAC: https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
 
