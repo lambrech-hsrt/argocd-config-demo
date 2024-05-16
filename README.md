@@ -1,4 +1,4 @@
-# argocd-config-demo
+#🤖 argocd-config-demo
 Argo CD Config Demo Repository with user management and RBAC management. In this Demo we will not configure Singe Sign on.
 This is an example for authorization handling in ArgoCD. We will create a simple user alice with limited access rights
 
